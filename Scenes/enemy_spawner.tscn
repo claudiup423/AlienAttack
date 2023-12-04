@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc2pceho6u5im"]
+
+[ext_resource type="Script" path="res://Scripts/enemy_spawner.gd" id="1_jyrl6"]
+
+[node name="EnemySpawner" type="Node2D"]
+script = ExtResource("1_jyrl6")
+
+[node name="SpawnPositions" type="Node2D" parent="."]
+
+[node name="SpawnPosition_01" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(1350, 50)
+
+[node name="SpawnPosition_02" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(1350, 175)
+
+[node name="SpawnPosition_03" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(1350, 300)
+
+[node name="SpawnPosition_04" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(1350, 425)
+
+[node name="SpawnPosition_05" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(1350, 550)
+
+[node name="SpawnPosition_06" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(1350, 675)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="EnemyPathTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="EnemyPathTimer" to="." method="_on_enemy_path_timer_timeout"]
